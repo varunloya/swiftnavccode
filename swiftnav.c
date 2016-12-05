@@ -1,12 +1,14 @@
 /*For this test there are overlapping condition.
 3 and 5 are prime number and also they are divisible by itself.
 So the code can print either BuzzFizz or it can print Buzz or Fizz,
-for 3 and 5 respectively. I am printing the prime number condition (BuzzFizz) instead of printing 3 and 5 as Buzz or Fizz*/
-
+for 3 and 5 respectively. I am printing the prime number condition (BuzzFizz) instead of printing 3 and 5 as Buzz or Fizz
+Used long long for big numbers of fibonacci series*/
+#include<assert.h>
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
-int FizzBuzz();
+
+void FizzBuzz();
 int prime();
 int main()
 {
@@ -18,11 +20,9 @@ int main()
 	unsigned long long c;
  	printf("Enter the number\n");
 	scanf("%d",&n);
- 	printf("First %d terms of Fibonacci series are:\n",n);
- 	printf("0\n"); 		/*0 is divisible by all integers and it is not a prime number. 
-						I decided to print 0 as it is instead of printing divisiblity condition by 3,5 or 15. */
-	
-	for ( c = 1 ; c < n ; c++ )
+ 	printf("First %d terms of Fibonacci series are:\n",n)
+
+	for ( c = 0 ; c < n ; c++ )  // 0 is divisible by 3,5 and 15 and is not a prime number. So for 0 case I am writing the divisibility test for 15.
    	{
       if ( c <= 1 )
         {
@@ -34,6 +34,7 @@ int main()
          first = second;
          second = next;
       }
+      assert(next>=0); 
       FizzBuzz(next);
 
 	}	
@@ -41,9 +42,10 @@ int main()
 	return 0;
 }
 
-int FizzBuzz(x)
+void FizzBuzz(unsigned long long x)
 {
 		
+		assert(x>=0); 
 	if(x%3==0 && x%5==0)
 	  		{
 	  			printf("FizzBuzz\n");
@@ -65,7 +67,8 @@ int FizzBuzz(x)
 	
 				printf("%d\n",x);
 			}
-	return 0;	
+			
+	return;	
 	
 }
 
@@ -87,20 +90,15 @@ int prime(n)
 		}
 	else
 		{
-			for (a=3;a<=x;a+2) 
+			for (a=3;a<=x;a=a+2) 
 			{
         		if (n%a==0) 
 				{
            			return 0;
         		}
-        		else if(n%(a+2)==0)
-        		{
-					return 0;
-    	    	}
-				else 
-					return 1;    
+        		
  			}
-      
-	  return 1;    
+      	return 1;
+					
 		}
 }
