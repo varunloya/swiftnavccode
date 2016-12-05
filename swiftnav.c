@@ -8,7 +8,8 @@ for 3 and 5 respectively. I am printing the prime number condition (BuzzFizz) in
 #include<math.h>
 int FizzBuzz();
 int prime();
-int main(){
+int main()
+{
 	
 	unsigned long long next;
 	unsigned long long n; 
@@ -40,7 +41,8 @@ int main(){
 	return 0;
 }
 
-int FizzBuzz(x){
+int FizzBuzz(x)
+{
 		
 	if(x%3==0 && x%5==0)
 	  		{
@@ -58,11 +60,11 @@ int FizzBuzz(x){
    			{
    				printf("Fizz\n");
 			}
- 	else
-		{
+ 		else
+			{
 	
-		printf("%d\n",x);
-		}
+				printf("%d\n",x);
+			}
 	return 0;	
 	
 }
@@ -72,32 +74,33 @@ int prime(n)
 	unsigned long long x,a;
 	x=floor(sqrt(n));
 	if(n<2)
-	{
-		return 0;
-	}
-	if(n==2){
-		return 1;
-	}
-	else if(n%2==0)
-	{
-		return 0;
-	}
-	else
-	{
-		for (a=3;a<=x;a+2) 
 		{
-        	if (n%a==0) 
-			{
-           		return 0;
-        	}
-        	else if(n%(a+2)==0)
-        	{
 			return 0;
-    	    }
-			else 
-			return 1;    
- 		}
+		}
+	if(n==2)
+		{
+			return 1;
+		}
+	else if(n%2==0)
+		{
+			return 0;
+		}
+	else
+		{
+			for (a=3;a<=x;a+2) 
+			{
+        		if (n%a==0) 
+				{
+           			return 0;
+        		}
+        		else if(n%(a+2)==0)
+        		{
+					return 0;
+    	    	}
+				else 
+					return 1;    
+ 			}
       
 	  return 1;    
-	}
+		}
 }
