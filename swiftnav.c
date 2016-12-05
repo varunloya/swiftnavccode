@@ -1,14 +1,27 @@
+/*For this test there are overlapping condition.
+3 and 5 are prime number and also they are divisible by itself.
+So the code can print either BuzzFizz or it can print Buzz or Fizz,
+for 3 and 5 respectively. I am printing the prime number condition (BuzzFizz) instead of printing 3 and 5 as Buzz or Fizz*/
+
 #include<stdio.h>
 #include<conio.h>
+#include<math.h>
 int FizzBuzz();
 int prime();
 int main(){
-	int next;
-	int n, first = 0, second = 1, c;
+	
+	unsigned long long next;
+	unsigned long long n; 
+	unsigned long long first = 0; 
+	unsigned long long second = 1; 
+	unsigned long long c;
  	printf("Enter the number\n");
 	scanf("%d",&n);
  	printf("First %d terms of Fibonacci series are:\n",n);
- 	for ( c = 0 ; c < n ; c++ )
+ 	printf("0\n"); 		/*0 is divisible by all integers and it is not a prime number. 
+						I decided to print 0 as it is instead of printing divisiblity condition by 3,5 or 15. */
+	
+	for ( c = 1 ; c < n ; c++ )
    	{
       if ( c <= 1 )
         {
@@ -21,6 +34,7 @@ int main(){
          second = next;
       }
       FizzBuzz(next);
+
 	}	
     getch();
 	return 0;
@@ -55,20 +69,35 @@ int FizzBuzz(x){
 
 int prime(n)
 {
-	int a;
-	int c=0;	
-	for (a=1;a<=n;a++) 
+	unsigned long long x,a;
+	x=floor(sqrt(n));
+	if(n<2)
 	{
-        if (n%a==0) 
+		return 0;
+	}
+	if(n==2){
+		return 1;
+	}
+	else if(n%2==0)
+	{
+		return 0;
+	}
+	else
+	{
+		for (a=3;a<=x;a+2) 
 		{
-           c++;
-        }
-    }
-      if (c == 2) 
-	  {
-      	printf("%d\n",n);
-      }
+        	if (n%a==0) 
+			{
+           		return 0;
+        	}
+        	else if(n%(a+2)==0)
+        	{
+			return 0;
+    	    }
+			else 
+			return 1;    
+ 		}
       
-	  return 0;    
+	  return 1;    
+	}
 }
-
